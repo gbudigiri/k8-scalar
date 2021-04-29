@@ -14,8 +14,8 @@ spec:
         app: experiment-controller-0
         technology: scalar
     spec:
-      nodeSelector:
-        monitoringNode: "yes"
+      #nodeSelector:
+        #monitoringNode: "yes"
       containers:
       - name: experiment-controller-0
         image: cedricdd/exp-ex
