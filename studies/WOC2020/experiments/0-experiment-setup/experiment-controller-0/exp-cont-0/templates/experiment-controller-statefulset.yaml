@@ -5,6 +5,9 @@ metadata:
 spec:
   serviceName: experiment-controller
   replicas: 1
+  selector:
+    matchLabels:
+      app: experiment-controller-0
   template:
     metadata:
       labels:
