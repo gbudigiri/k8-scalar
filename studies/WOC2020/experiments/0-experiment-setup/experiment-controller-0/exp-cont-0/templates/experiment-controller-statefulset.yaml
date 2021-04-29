@@ -24,7 +24,7 @@ spec:
         - name: kubeconfig
           mountPath: ~/.kube/config
         - name: resultdata
-          mountPath: /exp/var
+          mountPath: /var
       volumes:
         - name: kubeconfig
           secret:
