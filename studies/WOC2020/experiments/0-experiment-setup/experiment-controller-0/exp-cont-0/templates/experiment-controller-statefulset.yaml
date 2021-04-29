@@ -28,7 +28,7 @@ spec:
       volumes:
         - name: kubeconfig
           secret:
-            secretName: kubeconfig
+            secretName: default-token-mkqrn 
         - name: resultdata
           hostPath:
             path: /data/results
