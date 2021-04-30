@@ -105,7 +105,7 @@ public class ActivationController {
             // Kubernetes API setup
             ApiClient client = ClientBuilder.cluster().build();
             Configuration.setDefaultApiClient(client);
-            AppsV1beta2Api api = new AppsV1beta2Api();
+            AppsV1Api api = new AppsV1Api();
 
             // Upgrade the new version and patch amount of replica's
             status.addStatus(LocalTime.now() + "- START: Upgrade to new version " + grp.getUpgradeVersion() + " for " + grp.getTenantList());
@@ -232,7 +232,7 @@ public class ActivationController {
                 TimeUnit.SECONDS.sleep(1);
 
             } catch (ApiException e) {
-                System.err.println("PodsReady - Exception when calling AppsV1beta2Api#listDeploymentForAllNamespaces");
+                System.err.println("PodsReady - Exception when calling AppsV1Api#listDeploymentForAllNamespaces");
                 System.err.println("Status code: " + e.getCode());
                 System.err.println("Reason: " + e.getResponseBody());
                 System.err.println("Response headers: " + e.getResponseHeaders());
@@ -247,7 +247,7 @@ public class ActivationController {
         System.out.println("Pods are ready, on to the next");
     }
 
-    public void upgradeDeployment(Deployment upgDep, String upgDeploymentName, int grpSize, AppsV1beta2Api api) {
+    public void upgradeDeployment(Deployment upgDep, String upgDeploymentName, int grpSize, AppsV1Api api) {
         try {
             //region Upgrade UpgDeployment
             // Requests and Limits per tenant for the UpgradedVersion
@@ -278,7 +278,7 @@ public class ActivationController {
             System.out.println("Upgrade Time is : " + upgDep.getUpgradeTime() + " from " + LocalTime.now());
             //endregion
         } catch (ApiException e) {
-            System.err.println("upgradeDeployment - Exception when calling AppsV1beta2Api#listDeploymentForAllNamespaces");
+            System.err.println("upgradeDeployment - Exception when calling AppsV1Api#listDeploymentForAllNamespaces");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -289,7 +289,7 @@ public class ActivationController {
         }
     }
 
-    public void downgradeDeployment(Deployment currDep, String currDeploymentName, int grpSize, AppsV1beta2Api api) {
+    public void downgradeDeployment(Deployment currDep, String currDeploymentName, int grpSize, AppsV1Api api) {
         try {
             // region Downgrade currDeployment
             // Requests and Limits per tenant for the CurrentVersion
@@ -313,7 +313,7 @@ public class ActivationController {
             System.out.println("Downgrade Time is : " + currDep.getUpgradeTime() + " from " + LocalTime.now());
             //endregion
         } catch (ApiException e) {
-            System.err.println("Exception when calling AppsV1beta2Api#listDeploymentForAllNamespaces");
+            System.err.println("Exception when calling AppsV1Api#listDeploymentForAllNamespaces");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
