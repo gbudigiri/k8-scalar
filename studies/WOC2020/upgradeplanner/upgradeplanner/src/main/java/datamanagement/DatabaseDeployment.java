@@ -5,7 +5,7 @@ import io.kubernetes.client.custom.Quantity;
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.ApiException;
 import io.kubernetes.client.openapi.Configuration;
-import io.kubernetes.client.openapi.apis.AppsV1beta2Api;
+import io.kubernetes.client.openapi.apis.AppsV1Api; //replaced "AppsV1beta2Api" with "AppsV1Api"
 import io.kubernetes.client.openapi.models.V1beta2Deployment;
 import io.kubernetes.client.openapi.models.V1beta2DeploymentList;
 import io.kubernetes.client.util.ClientBuilder;
@@ -194,7 +194,7 @@ public class DatabaseDeployment {
             ApiClient client = ClientBuilder.cluster().build();
             Configuration.setDefaultApiClient(client);
 
-            AppsV1beta2Api api = new AppsV1beta2Api();
+            AppsV1Api api = new AppsV1Api();
             V1beta2DeploymentList deploymentList = api.listDeploymentForAllNamespaces(null, null, "metadata.name=" + name, null, null, null, null, null, null);
             V1beta2Deployment dep = deploymentList.getItems().get(0);
 
@@ -213,7 +213,7 @@ public class DatabaseDeployment {
 
             return new Deployment(name, app, version, slaClass, requests, limits, tenantRequests, tenantLimits, upgradeTime);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AppsV1beta2Api#listDeploymentForAllNamespaces");
+            System.err.println("Exception when calling AppsV1Api#listDeploymentForAllNamespaces");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
