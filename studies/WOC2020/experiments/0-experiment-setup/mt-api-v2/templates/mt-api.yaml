@@ -1,4 +1,4 @@
-apiVersion: "apps/v1beta1"
+apiVersion: "apps/v1"
 kind: Deployment
 metadata:
   name: mt-api-v2
@@ -30,7 +30,8 @@ spec:
         sla: bronze
     spec:
       nodeSelector:
-        deployable: "true"
+        #deployable: "true"
+        kubernetes.io/os: "linux"
       affinity:
         podAffinity: 
           preferredDuringSchedulingIgnoredDuringExecution:
