@@ -86,7 +86,8 @@ spec:
         track: stable
     spec:
       nodeSelector:
-        planner: "true"
+        #planner: "true"
+        kubernetes.io/os: "linux"
       serviceAccountName: api-service-account
       containers:
       - name: upgradeplanner
