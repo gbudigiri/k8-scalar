@@ -30,7 +30,8 @@ spec:
         sla: bronze
     spec:
       nodeSelector:
-        deployable: "true"
+        kubernetes.io/os: "linux"
+        #deployable: "true"
       affinity:
         podAffinity: 
           preferredDuringSchedulingIgnoredDuringExecution:
