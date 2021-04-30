@@ -5,11 +5,14 @@ metadata:
   namespace: kube-system
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
   template:
     metadata:
       labels:
         task: monitoring
-        k8s-app: influxdb
+        app: influxdb
     spec:
       containers:
       - name: influxdb
