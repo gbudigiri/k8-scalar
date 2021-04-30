@@ -12,7 +12,7 @@ import io.kubernetes.client.openapi.Configuration;
 import io.kubernetes.client.openapi.apis.CoreV1Api;
 import io.kubernetes.client.openapi.models.*; //not found
 import io.kubernetes.client.util.ClientBuilder; //not found
-import io.kubernetes.client.util.Config; //not found
+import io.kubernetes.client.util.Config; 
 
 import java.util.*;
 import java.util.concurrent.Executors;
